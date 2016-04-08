@@ -13,7 +13,7 @@ public class GearBox {
 	}
 	
 	// checkGear Marche avec if et case
-	private void checkGear(int currentSpeed) {
+	public void checkGear(int currentSpeed) {
 		if (currentSpeed == 0 && currentGear == 0) {
 			changeGear(1);
 		}else if (currentSpeed < steps[1]){
