@@ -12,7 +12,7 @@ public class ModernCar {
 		int accel = gear.getAccel(this.currentSpeed);
 		//checkGear
 		this.currentSpeed += accel;
-                                    gear.checkGear(currentSpeed);
+                  gear.checkGear(currentSpeed);
 	}
 
 	public void decel() {
@@ -22,7 +22,7 @@ public class ModernCar {
 		}else{
 			this.currentSpeed=0;
 		}
-                                    gear.checkGear(currentSpeed);
+                  gear.checkGear(currentSpeed);
 	}	
 	
 	public int getCurrentSpeed() {
