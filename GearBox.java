@@ -3,53 +3,49 @@ public class GearBox {
 	//private int gears;
 	//private int offset;
 	private int currentGear;
+	private int maxGear=6;
+	private int[] offsets = {0,3,10,20,30,40,50};
+	private int[] steps = {0,20,60,80,100,120,120};
 	
 	
 	private void changeGear(int gear) {
 		this.currentGear = gear;
 	}
 	
+	// checkGear Marche avec if et case
 	private void checkGear(int currentSpeed) {
-		if(currentSpeed < 20) {
+		int curGear = this.currentGear;
+		if (currentSpeed== 0 && curGear == 0) {
 			changeGear(1);
-		}else if (currentSpeed < 60) {
-			changeGear(2);
-		}else if (currentSpeed < 80) {
-			changeGear(3);
-		}else if (currentSpeed < 100) {
-			changeGear(4);
-		}else if (currentSpeed < 120) {
-			changeGear(5);
-		}else{
-			changeGear(6);
+		}else if (curGear != maxGear){
+			if (currentSpeed > steps[curGear]){
+				changeGear(curGear+1);
+			}else if (currentSpeed < steps[curGear]){
+				changeGear(curGear);
+			}else if (currentSpeed <= steps[curGear-1]){
+				changeGear(curGear-1);
+			}
+			
 		}
 	}
+	// idee:
+//	private void checkGear(int currentSpeed) {
+//		for (int i=0; i < steps.length; i++) {
+//			
+//		}
+//	}
+	
 	
 	public int getAccel(int currentSpeed) {
-		int offset = 0;
-			if (this.currentGear == 0) {
-				offset = 0;
+		int accel = 0;
+		for (int i = 0; i<offsets.length;i++) {
+			if (this.currentGear == i) {
+				accel = offsets[i];
 				checkGear(currentSpeed);
-			}else if (this.currentGear == 1) {
-				offset = 3;
-				checkGear(currentSpeed);
-			}else if (this.currentGear == 2){
-				offset = 10;
-				checkGear(currentSpeed);
-			}else if (this.currentGear == 3){
-				offset = 20;
-				checkGear(currentSpeed);
-			}else if (this.currentGear == 4){
-				offset = 30;
-				checkGear(currentSpeed);
-			}else if (this.currentGear == 5){
-				offset = 40;
-				checkGear(currentSpeed);
-			}else if (this.currentGear == 6){
-				offset = 50;
-				checkGear(currentSpeed);
+				break;
 			}
-			return offset;
+		}
+		return accel;
 	}
 
 	
