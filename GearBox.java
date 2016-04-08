@@ -14,18 +14,20 @@ public class GearBox {
 	
 	// checkGear Marche avec if et case
 	private void checkGear(int currentSpeed) {
-		int curGear = this.currentGear;
-		if (currentSpeed== 0 && curGear == 0) {
+		if (currentSpeed == 0 && currentGear == 0) {
 			changeGear(1);
-		}else if (curGear != maxGear){
-			if (currentSpeed > steps[curGear]){
-				changeGear(curGear+1);
-			}else if (currentSpeed < steps[curGear]){
-				changeGear(curGear);
-			}else if (currentSpeed <= steps[curGear-1]){
-				changeGear(curGear-1);
-			}
-			
+		}else if (currentSpeed < steps[1]){
+			changeGear(1);
+		}else if (currentSpeed < steps[2]){
+			changeGear(2);
+		}else if (currentSpeed < steps[3]){
+			changeGear(3);
+		}else if (currentSpeed < steps[4]){
+			changeGear(4);
+		}else if (currentSpeed < steps[5]){
+			changeGear(5);
+		}else{
+			changeGear(6);
 		}
 	}
 	// idee:
@@ -41,7 +43,7 @@ public class GearBox {
 		for (int i = 0; i<offsets.length;i++) {
 			if (this.currentGear == i) {
 				accel = offsets[i];
-				checkGear(currentSpeed);
+				checkGear(currentSpeed); // impl apres car.accel dans ModernCar
 				break;
 			}
 		}

@@ -10,6 +10,7 @@ public class ModernCar {
 	
 	public void accel() {
 		int accel = gear.getAccel(this.currentSpeed);
+		//checkGear
 		this.currentSpeed += accel;
 	}
 
