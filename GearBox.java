@@ -43,7 +43,6 @@ public class GearBox {
 		for (int i = 0; i<offsets.length;i++) {
 			if (this.currentGear == i) {
 				accel = offsets[i];
-				checkGear(currentSpeed); // impl apres car.accel dans ModernCar
 				break;
 			}
 		}
